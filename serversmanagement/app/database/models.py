@@ -59,7 +59,7 @@ class Server(ext.db.Model):
 
         runs = [run for run in self.runs
                 if int(run.state) in (settings.RUN_STATE['in_progress'],
-                                 settings.RUN_STATE['done'])]
+                                      settings.RUN_STATE['done'])]
         for run in runs:
             reserved_ram += run.used_ram
         return reserved_ram
@@ -70,7 +70,7 @@ class Server(ext.db.Model):
 
         runs = [run for run in self.runs
                 if int(run.state) in (settings.RUN_STATE['in_progress'],
-                                 settings.RUN_STATE['done'])]
+                                      settings.RUN_STATE['done'])]
         for run in runs:
             reserved_disk += run.used_disk
         return reserved_disk
@@ -126,5 +126,7 @@ class Run(ext.db.Model):
 
     @property
     def used_disk(self):
-        # TODO(used_disk): add parameter for disk and then implement
-        return 100
+        if (self.args and 'node_volume_size' in self.args and
+                'nodes_count' in self.args):
+            return self.args['node_volume_size'] * self.args['nodes_count']
+        return 500

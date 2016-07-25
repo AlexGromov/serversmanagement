@@ -5,8 +5,8 @@ import subprocess
 import threading
 from time import sleep
 
-from serversmanagement.app import extensions as ext
 from serversmanagement.app.database import models
+from serversmanagement.app import extensions as ext
 from serversmanagement.app import servermanager
 from serversmanagement import settings
 

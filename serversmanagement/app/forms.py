@@ -83,6 +83,12 @@ class TaskDeployMOSForm(flask_wtf.Form):
                                                      (6144, '6144'),
                                                      (8192, '8192')],
                                             default=4096)
+
+    node_volume_size = wtforms.IntegerField('node_volume_size',
+                                            validators=[validators.NumberRange(
+                                                min=50, max=100)],
+                                            default=50)
+
     keep_days = wtforms.IntegerField('keep_days',
                                      default=settings.KEEP_DAYS,
                                      validators=[validators.NumberRange(min=0)]

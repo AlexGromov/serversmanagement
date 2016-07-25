@@ -73,6 +73,18 @@
 
     <tr>
         <td>
+            <b>Volume size for each node:</b>
+        </td>
+        <td>
+            {{ form.node_volume_size }}
+            {% if form.node_volume_size.errors %}<br>
+                <font color="red">{{ form.node_volume_size.errors | join(', ') }}</font>
+            {% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <td>
             <b>Deployment name:</b> <font color="orange">(optional)</font><br>
             (<b>auto-generated</b> from user+url, like: <b>admin_9.0-123</b>)
         </td>

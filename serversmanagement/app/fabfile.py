@@ -16,6 +16,7 @@ def deploy_mos(**kwargs):
     with shell_env(SLAVE_NODE_MEMORY=kwargs['slave_node_memory'],
                    SLAVE_NODE_CPU=kwargs['slave_node_cpu'],
                    NODES_COUNT=kwargs['nodes_count'],
+                   NODE_VOLUME_SIZE=kwargs['node_volume_size'],
                    DEPLOYMENT_NAME=kwargs['deploy_name'],
                    ISO_URL=kwargs['iso_url'],
                    IRONIC_NODES_COUNT=kwargs['ironic_nodes_count'],
